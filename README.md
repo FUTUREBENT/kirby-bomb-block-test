@@ -1,0 +1,2 @@
+# kirby-bomb-block-test
+
