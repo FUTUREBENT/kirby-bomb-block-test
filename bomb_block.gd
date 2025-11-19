@@ -29,10 +29,14 @@ func explode_tiles() -> void:
 		return
 	
 	for tile in tiles_to_destroy:
+		
 		erase_cell(tile);
 		for neighbor in get_surrounding_cells(tile):
-			if neighbor not in adjacent_tiles:
+			if neighbor not in adjacent_tiles and has_tile(neighbor):
 				adjacent_tiles.append(neighbor);
 	tiles_to_destroy.clear();
 	tiles_to_destroy.append_array(adjacent_tiles);
 	adjacent_tiles.clear();
+
+func has_tile(pos: Vector2i) -> bool:
+	return get_cell_source_id(pos) != -1
